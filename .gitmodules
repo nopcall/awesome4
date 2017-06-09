@@ -1,0 +1,9 @@
+[submodule "lib/lain"]
+	path = lib/lain
+	url = https://github.com/copycat-killer/lain
+[submodule "lib/freedesktop"]
+	path = lib/freedesktop
+	url = https://github.com/copycat-killer/awesome-freedesktop
+[submodule "lib/tyrannical"]
+	path = lib/tyrannical
+	url = https://github.com/Elv13/tyrannical

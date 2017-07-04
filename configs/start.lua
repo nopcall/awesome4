@@ -26,10 +26,12 @@ autorun("unclutter", "-root")
 -- autorun("xinput", "set-prop 'AT Translated Set 2 keyboard' 'Device Enabled' 0")
 -- autorun("compton", "&")
 
-autorun("/usr/libexec/polkit-gnome-authentication-agent-1")
+-- autorun("/usr/libexec/polkit-gnome-authentication-agent-1")
+autorun("/usr/lib64/libexec/polkit-kde-authentication-agent-1")
+
 -- autorun("xss-lock.sh", "start")
 
-autorun("nm-applet")
+-- autorun("nm-applet")
 -- autorun("blueman-applet")
 -- autorun("autokey-gtk")
 autorun("goldendict")

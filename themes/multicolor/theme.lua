@@ -6,11 +6,11 @@
 theme                               = {}
 
 -- essential dir
-theme.confdir                       = awful.util.getdir("config") .. "/themes/multicolor"
-theme.icondir                       = theme.confdir .. "/icons"
+theme.confdir                       = awful.util.getdir("config") .. "/themes/multicolor/"
+theme.icondir                       = theme.confdir .. "icons/"
 
 -- theme.wallpaper                     = theme.confdir .. "/wallpaper/solarized-dark-k.png"
-theme.wallpaper                     = theme.confdir .. "/wallpaper/emacs.png"
+theme.wallpaper                     = theme.confdir .. "wallpaper/emacs.png"
 theme.font                          = "Terminus 8"
 
 -- {{{ color defines
@@ -68,6 +68,10 @@ theme.fg_urgent                     = theme.colors.base3
 
 -- {{{ border
 theme.border_width                  = 5
+theme.border_width_float            = 3
+theme.border_width_dialog           = 3
+theme.border_width_max              = 0
+
 theme.border_normal                 = theme.bg_normal
 theme.border_focus                  = theme.colors.mt_cyan
 theme.border_marked                 = theme.bg_urgent
@@ -76,14 +80,14 @@ theme.border_marked                 = theme.bg_urgent
 -- {{{ menu
 theme.menu_height                   = 15
 theme.menu_width                    = 100
-theme.submenu_icon                  = theme.icondir .. "/submenu.png"
+theme.submenu_icon                  = theme.icondir .. "submenu.png"
 -- }}}
 
 -- {{{ tag
-theme.icon_tag                      = theme.icondir .. "/taglist"
+theme.icon_tag                      = theme.icondir .. "taglist/"
 
-theme.taglist_squares_sel           = theme.icon_tag .. "/square_sel.png"
-theme.taglist_squares_unsel         = theme.icon_tag .. "/square_unsel.png"
+theme.taglist_squares_sel           = theme.icon_tag .. "square_sel.png"
+theme.taglist_squares_unsel         = theme.icon_tag .. "square_unsel.png"
 -- }}}
 
 -- {{{ tasklist
@@ -93,28 +97,39 @@ theme.tasklist_disable_icon         = false
 -- theme.tasklist_bg_minimize          = theme.bg_normal
 
 -- flag
-theme.tasklist_floating             = "|F|"
-theme.tasklist_ontop                = "|T|"
-theme.tasklist_maximized            = "|M|"
-theme.tasklist_maximized_horizontal = "|H|"
-theme.tasklist_maximized_vertical   = "|V|"
+theme.tasklist_floating             = "🅵"
+theme.tasklist_ontop                = "🆃 "
+theme.tasklist_maximized            = "🅼"
+theme.tasklist_maximized_horizontal = "🅷"
+theme.tasklist_maximized_vertical   = "🆅"
 -- }}}
 
 -- {{{ layout icons
-theme.icon_layout                   = theme.icondir .."/layout"
+theme.icon_layout                   = theme.icondir .."/layout/"
 
-theme.layout_tile                   = theme.icon_layout .. "/tile.png"
-theme.layout_tileleft               = theme.icon_layout .. "/tileleft.png"
-theme.layout_tilebottom             = theme.icon_layout .. "/tilebottom.png"
-theme.layout_tiletop                = theme.icon_layout .. "/tiletop.png"
-theme.layout_fairv                  = theme.icon_layout .. "/fairv.png"
-theme.layout_fairh                  = theme.icon_layout .. "/fairh.png"
-theme.layout_spiral                 = theme.icon_layout .. "/spiral.png"
-theme.layout_dwindle                = theme.icon_layout .. "/dwindle.png"
-theme.layout_max                    = theme.icon_layout .. "/max.png"
-theme.layout_fullscreen             = theme.icon_layout .. "/fullscreen.png"
-theme.layout_magnifier              = theme.icon_layout .. "/magnifier.png"
-theme.layout_floating               = theme.icon_layout .. "/floating.png"
+theme.layout_tile                   = theme.icon_layout .. "tile.png"
+theme.layout_tileleft               = theme.icon_layout .. "tileleft.png"
+theme.layout_tilebottom             = theme.icon_layout .. "tilebottom.png"
+theme.layout_tiletop                = theme.icon_layout .. "tiletop.png"
+theme.layout_fairv                  = theme.icon_layout .. "fairv.png"
+theme.layout_fairh                  = theme.icon_layout .. "fairh.png"
+theme.layout_spiral                 = theme.icon_layout .. "spiral.png"
+theme.layout_dwindle                = theme.icon_layout .. "dwindle.png"
+theme.layout_max                    = theme.icon_layout .. "max.png"
+theme.layout_fullscreen             = theme.icon_layout .. "fullscreen.png"
+theme.layout_magnifier              = theme.icon_layout .. "magnifier.png"
+theme.layout_floating               = theme.icon_layout .. "floating.png"
 -- }}}
+
+theme.icon_titlebar = theme.icondir .. "/titlebar/"
+theme.titlebar_close_button_normal = theme.icon_titlebar .. "close_normal.png"
+theme.titlebar_close_button_focus = theme.icon_titlebar .. "close_focus.png"
+theme.titlebar_maximized_button_normal_active = theme.icon_titlebar .. "maximized_normal_active.png"
+theme.titlebar_maximized_button_normal_inactive = theme.icon_titlebar .. "maximized_normal_inactive.png"
+theme.titlebar_maximized_button_focus_active = theme.icon_titlebar .. "maximized_focus_active.png"
+theme.titlebar_maximized_button_focus_inactive = theme.icon_titlebar .. "maximized_focus_inactive.png"
+
+theme.titlebar_minimize_button_normal = theme.icon_titlebar .. "minimize_normal.png"
+theme.titlebar_minimize_button_focus = theme.icon_titlebar .. "minimize_focus.png"
 
 return theme

@@ -32,7 +32,7 @@ context.tags = {
     names = {"", -- 1.web:  chrome (0xf268)
              "", -- 2.devlop: github (0xf09b)
              "", -- 3.docs: pdf (0xf1c1)
-             "", -- 4.media: television (0xf26c)  (0xf001)
+             "🎧", -- 4.media: television (0xf26c)  (0xf001)
              "", -- 5.term: command (0xf120)
              "", -- 6.files: folder (0xf07b)
              "", -- 7,

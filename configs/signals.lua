@@ -2,21 +2,69 @@
 
 -- signal function to execute when a new client appears.
 client.connect_signal(
-    "manage",
-    function (c, startup)
-        -- Put windows in a smart way, only if they does not set an initial position.
-        if not startup then
-            if not c.size_hints.user_position
-                and
-                not c.size_hints.program_position
-            then
-                awful.placement.no_overlap(c)
-                awful.placement.no_offscreen(c)
-            end
-            c:raise()
-        end
+  "manage",
+  function (c)
+    -- Set the windows at the slave,
+    -- i.e. put it at the end of others instead of setting it master.
+    -- if not awesome.startup then awful.client.setslave(c) end
 
+    if awesome.startup and
+      not c.size_hints.user_position
+    and not c.size_hints.program_position then
+      -- Prevent clients from being unreachable after screen count changes.
+      awful.placement.no_offscreen(c)
     end
+  end
+)
+
+-- Add a titlebar if titlebars_enabled is set to true in the rules
+local gears = require("gears")
+local wibox = require("wibox")
+client.connect_signal(
+  "request::titlebars",
+  function(c)
+    -- buttons for the titlebar
+    local buttons = gears.table.join(
+      awful.button({}, 1, function()
+          client.focus = c
+          c:raise()
+          awful.mouse.client.move(c)
+      end),
+      awful.button({}, 3, function()
+          client.focus = c
+          c:raise()
+          awful.mouse.client.resize(c)
+      end)
+    )
+
+    awful.titlebar(c):setup
+    {
+      { -- Left
+        awful.titlebar.widget.iconwidget(c),
+        buttons = buttons,
+        layout  = wibox.layout.fixed.horizontal
+      },
+      { -- Middle
+        { -- Title
+          align  = "center",
+          widget = awful.titlebar.widget.titlewidget(c)
+        },
+        buttons = buttons,
+        layout  = wibox.layout.flex.horizontal
+      },
+      { -- Right
+        -- awful.titlebar.widget.floatingbutton(c),
+        awful.titlebar.widget.maximizedbutton(c),
+        awful.titlebar.widget.minimizebutton(c),
+        -- awful.titlebar.widget.stickybutton(c),
+        -- awful.titlebar.widget.ontopbutton(c),
+        awful.titlebar.widget.closebutton(c),
+        layout = wibox.layout.fixed.horizontal
+      },
+      layout = wibox.layout.align.horizontal
+    }
+
+  end
 )
 
 -- Enable sloppy focus, so that focus follows mouse.
@@ -37,8 +85,6 @@ client.connect_signal(
         if c.maximized_horizontal == true and c.maximized_vertical == true then
             c.border_width = 0
         else
---            c.border_color = beautiful.border_normal
-
             c.border_color = beautiful.border_focus
         end
 
@@ -65,36 +111,18 @@ screen.connect_signal(
             -- Floaters always have borders
             for _, c in pairs(clients) do
                 -- No borders with only one humanly visible client
-                if layout == "max" and c.type ~= "DIALOG" then
+                if layout == "max" and c.type ~= "dialog" then
                     -- client in max layout tag should not have border unless it's a dialog window
-                    c.border_width = 0
+                    c.border_width = beautiful.border_width_max
                 elseif c.floating or layout == "floating" then
                     -- floating client or flotaing tag have border
-                    c.border_width = beautiful.border_width
+                    c.border_width = beautiful.border_width_float
                 elseif #clients == 1 then
                     -- only a client should be maximenized and no border
-                    clients[1].border_width = 0
-
-                    -- if layout ~= "max" then
-                    --     -- awful.client.moveresize(0, 0, 2, 0, clients[1])
-                    --     clients[1]:relative_move(0, 0, 2, 0)
-                    -- end
-
+                    c.border_width = beautiful.border_width_max
                 else
                     c.border_width = beautiful.border_width
                 end
-
-                -- goldendict and zeal
-                -- dialog box should have a special border
-                if (c.type == "DIALOG") or
-                    (c.class == "GoldenDict") or
-                    (c.class == "Zeal")
-                then
-                    c.width = 800
-                    c.height = 600
-                    c.border_width = 1
-                end
-
             end
         end
     end

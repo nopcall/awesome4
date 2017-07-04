@@ -17,7 +17,7 @@ awful.rules.rules = {
     },
 
     -- Add titlebars to normal clients and dialogs
-    {rule_any = {type = {"dialog", "normal"}},
+    {rule_any = {type = {"dialog"}},
      properties = {titlebars_enabled = true}
     },
 

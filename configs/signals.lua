@@ -81,14 +81,8 @@ client.connect_signal(
 client.connect_signal(
     "focus",
     function(c)
-        -- No border for maximized clients
-        if c.maximized_horizontal == true and c.maximized_vertical == true then
-            c.border_width = 0
-        else
-            c.border_color = beautiful.border_focus
-        end
-
         -- focus windows should not transparent
+        c.border_color = beautiful.border_focus
         c.opacity = 1
     end
 )
@@ -110,19 +104,16 @@ screen.connect_signal(
         if #clients > 0 then
             -- Floaters always have borders
             for _, c in pairs(clients) do
-                -- No borders with only one humanly visible client
-                if layout == "max" and c.type ~= "dialog" then
-                    -- client in max layout tag should not have border unless it's a dialog window
-                    c.border_width = beautiful.border_width_max
-                elseif c.floating or layout == "floating" then
-                    -- floating client or flotaing tag have border
+                if awful.client.floating.get(c) or layout == "floating" then
                     c.border_width = beautiful.border_width_float
-                elseif #clients == 1 then
-                    -- only a client should be maximenized and no border
-                    c.border_width = beautiful.border_width_max
+
+                -- No borders with only one visible client
+                elseif #clients == 1 or layout == "max" then
+                    c.border_width = 0
                 else
                     c.border_width = beautiful.border_width
                 end
+
             end
         end
     end

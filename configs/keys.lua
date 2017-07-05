@@ -78,6 +78,11 @@ context.keys.global = awful.util.table.join(
                 client.focus:raise()
             end
         end, "Focus to Last Client"),
+    awful.key({context.keys.modkey, "Shift"}, "Tab", function ()
+        -- If you want to always position the menu on the same place set coordinates
+        awful.menu.menu_keys.down = { "Down", "Alt_L" }
+        awful.menu.clients({theme = { width = 250 }}, { keygrabber=true, coords={x=525, y=330} })
+    end),
 
     keydoc.group("Window-specific bindings"),
     awful.key({context.keys.modkey, "Control"}, "n", awful.client.restore, "Restore Minimize Client"),
@@ -180,8 +185,9 @@ context.keys.client = awful.util.table.join(
             c:swap(awful.client.getmaster())
         end, "SwapToMaster"),
     awful.key({context.keys.modkey, "Shift"}, "o", function(c) c:move_to_screen() end, "Move to Screen"),
-    awful.key({context.keys.modkey}, "t", function (c) c.ontop = not c.ontop end,
+    awful.key({context.keys.modkey, "Shift"}, "t", function (c) c.ontop = not c.ontop end,
         "Make Screen on Top"),
+    awful.key({context.keys.modkey}, "t", awful.titlebar.toggle),
     awful.key({context.keys.modkey}, "n",
         function (c)
             -- The client currently has the input focus, so it cannot be

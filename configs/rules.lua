@@ -13,12 +13,16 @@ awful.rules.rules = {
                    buttons          = context.buttons.client,
                    screen           = awful.screen.preferred,
                    placement        = awful.placement.no_overlap+awful.placement.no_offscreen,
-                   size_hints_honor = false}
+                   size_hints_honor = false},
+     callback = awful.client.setslave
     },
 
     -- Add titlebars to normal clients and dialogs
     {rule_any = {type = {"dialog"}},
-     properties = {titlebars_enabled = true}
+     properties = {titlebars_enabled = true},
+     callback = function(c)
+       awful.placement.centered(c, nil)
+     end
     },
 
     {rule_any   = {class = {"Zeal", "GoldenDict", "copyq"}},
@@ -32,13 +36,7 @@ awful.rules.rules = {
     },
 
     {rule_any   = {class = {"Google-chrome", "Firefox", "plugin-container"}},
-     properties = {tag   = screen[1].tags[1]},
-     callback   = function(c)
-       -- All windows should be slaves, except the browser windows.
-       if c.role ~= "browser" then
-         awful.client.setslave(c)
-       end
-     end
+     properties = {tag   = screen[1].tags[1]}
     },
 
     {rule_any   = {class = {"SmartGit", "Emacs", "Gvim"}},

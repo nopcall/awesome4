@@ -196,8 +196,9 @@ context.keys.client = awful.util.table.join(
         end, "Minimize current Client"),
     awful.key({context.keys.modkey}, "m",
         function (c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c.maximized_vertical   = not c.maximized_vertical
+            c.maximized = not c.maximized
+            -- c.maximized_horizontal = not c.maximized_horizontal
+            -- c.maximized_vertical   = not c.maximized_vertical
         end, "Maximize Current Client")
 )
 

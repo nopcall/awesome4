@@ -31,7 +31,7 @@ autorun("/usr/lib64/libexec/polkit-kde-authentication-agent-1")
 
 -- autorun("xss-lock.sh", "start")
 
--- autorun("nm-applet")
+autorun("nm-applet")
 -- autorun("blueman-applet")
 -- autorun("autokey-gtk")
 autorun("goldendict")

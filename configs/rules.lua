@@ -5,21 +5,22 @@ awful.rules = require("awful.rules")
 awful.rules.rules = {
     -- All clients will match this rule.
     {rule       = {},
-     properties = {border_width     = beautiful.border_width,
-                   border_color     = beautiful.border_normal,
-                   focus            = awful.client.focus.filter,
-                   raise            = true,
-                   keys             = context.keys.client,
-                   buttons          = context.buttons.client,
-                   screen           = awful.screen.preferred,
-                   placement        = awful.placement.no_overlap+awful.placement.no_offscreen,
-                   size_hints_honor = false},
+     properties = {border_width      = beautiful.border_width,
+                   border_color      = beautiful.border_normal,
+                   focus             = awful.client.focus.filter,
+                   raise             = true,
+                   keys              = context.keys.client,
+                   buttons           = context.buttons.client,
+                   screen            = awful.screen.preferred,
+                   placement         = awful.placement.no_overlap+awful.placement.no_offscreen,
+                   titlebars_enabled = true,
+                   size_hints_honor  = false},
      callback = awful.client.setslave
     },
 
     -- Add titlebars to normal clients and dialogs
     {rule_any = {type = {"dialog"}},
-     properties = {titlebars_enabled = true},
+     properties = {},
      callback = function(c)
        awful.placement.centered(c, nil)
      end

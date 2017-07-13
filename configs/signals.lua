@@ -64,6 +64,11 @@ client.connect_signal(
       layout = wibox.layout.align.horizontal
     }
 
+    -- Hide the menubar if we are not floating
+    if c.type ~= "dialog" or not c.floating then
+      awful.titlebar.hide(c)
+    end
+
   end
 )
 

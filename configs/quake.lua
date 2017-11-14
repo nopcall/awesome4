@@ -6,7 +6,7 @@ local quakeconsole = {}
 for s = 1, screen.count() do
     quakeconsole[s] = quake({terminal = context.cmd.terminal,
                              name = "quake_unique_instance" .. s,
-                             height = 0.45,
+                             height = 0.65,
                              width = 0.95,
                              screen = s})
 end

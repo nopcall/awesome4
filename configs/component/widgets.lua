@@ -16,14 +16,6 @@ sepd:set_bg(theme.wibox_bg_darker)
 --{{{
 textclock = wibox.widget.textclock(" %H:%M ")
 
--- binary clock
-binclock = require("binclock") {
-    height = 16,
-    show_seconds = true,
-    color_active = theme.fg_normal,
-    color_inactive = theme.bg_focus
-}
-
 -- calendar
 calendar = lain.widget.calendar({
     --cal = "cal --color=always",

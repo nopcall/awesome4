@@ -47,6 +47,13 @@ context = {
         terminal = "urxvtc",
         browser = "google-chrome"
     },
+    guitools = {
+      browser = "google-chrome",
+      pdfviewer = "org.kde.okular",
+      picviewer = "org.kde.gwenview",
+      videoplayer = "vlc",
+      filemanager = "org.kde.dolphin"
+    },
     fonts = {},
 
     layouts = {},               -- layouts
@@ -70,7 +77,7 @@ loadrc("rules")         -- client rules
 --loadrc("dtags")
 loadrc("quake")         -- dropdown terminal
 -- loadrc("droppad")       -- dropdown pad
--- loadrc("mime")          -- set mime default application
+loadrc("mime")          -- set mime default application
 loadrc("start")         -- autostart applications
 loadrc("xrandr")        -- multi screen
 -- }}}

@@ -9,7 +9,8 @@ local xdg_mime = function (prg)
     os.execute(table.concat(cmd, ";"))
 end
 
-xdg_mime(browser)
-xdg_mime(pdfviewer)
-xdg_mime(picviewer)
-xdg_mime(videoplayer)
+xdg_mime(context.guitools.browser)
+xdg_mime(context.guitools.picviewer)
+xdg_mime(context.guitools.pdfviewer)
+xdg_mime(context.guitools.videoplayer)
+xdg_mime(context.guitools.filemanager)
